@@ -203,10 +203,9 @@ router.get("/app/obtenerTotalMinutosSupervisor", (req, res)=>{
     select * from actividades 
     INNER JOIN ordenes_prod ON actividades.orden = ordenes_prod.idOrdenProd
     INNER JOIN empleados ON actividades.empleado = empleados.idEmpleado
-    where supervisor = ?;
     `;
 
-    mysqlConnection.query(query,[idSupervisor], (err, rows, fields)=>{
+    mysqlConnection.query(query, (err, rows, fields)=>{
         if(!err){
             if(rows[0]){
                 var minutos = 0
